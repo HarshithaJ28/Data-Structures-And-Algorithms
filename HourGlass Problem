@@ -1,0 +1,74 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int i,j,k,m,n;
+    int arr[m][n];
+    cout<<"Accept the no.of.rows and columns";
+    cin>>m>>n;//No.of.rows and columns
+    for(i=0;i<m;i++)
+     for(j=0;j<n;j++)
+       cin>>arr[i][j];   
+    int hsum;
+    int maxhsum=-999;
+    int sum; 
+    for(i=0;i<m-2;i++)
+    {
+        for(j=0;j<n-2;j++)
+        {
+            sum=0;
+            //sum=arr[i][j]+arr[i][j+1]+arr[i][j+2]+arr[i+1][j+1]+arr[i+2][j]+arr[i+2][j+1]+arr[i+2][j+2];
+            int count=0;
+            for(k=j;k<=(j+2);k++)
+            {
+                count++;
+                if(count==2)
+                {
+                  sum=sum+arr[i+1][k]; 
+                  sum=sum+arr[i][k];
+                  sum=sum+arr[i+2][k]; 
+                }
+                else
+                {
+                  sum=sum+arr[i][k];
+                  sum=sum+arr[i+2][k];
+                }
+            }   
+            hsum=sum;
+            //cout<<hsum<<endl;
+            if(hsum>maxhsum)
+                maxhsum=hsum;
+        }
+    }    
+    cout<<maxhsum;
+}
+---------------------------------------------------------------------------------------------------------------------------------
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int i,j,k,m,n;
+    int arr[m][n];
+    cout<<"Accept the no.of.rows and columns";
+    cin>>m>>n;//No.of.rows and columns
+    for(i=0;i<m;i++)
+     for(j=0;j<n;j++)
+       cin>>arr[i][j];
+       
+    int hsum=0;
+    int maxhsum=-999;
+    int sum;
+    int n=0;
+    
+    for(i=0;i<m-2;i++)
+    {
+        for(j=0;j<n-2;j++)
+        {
+            sum=arr[i][j]+arr[i][j+1]+arr[i][j+2]+arr[i+1][j+1]+arr[i+2][j]+arr[i+2][j+1]+arr[i+2][j+2];
+            hsum=sum;
+            if(hsum>maxhsum)
+                maxhsum=hsum;
+        }
+   }
+    cout<<maxhsum;
+}
